@@ -38,16 +38,16 @@
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 				<?php
 			endif;
-			$dwd_theme_description = get_bloginfo( 'description', 'display' );
-			if ( $dwd_theme_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $dwd_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
+		        ?>
+
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'dwd-theme' ); ?></button>
 			<?php
+
+get_template_part( 'template-parts/navmenu' );
+
 			wp_nav_menu(
 				array(
 					'theme_location' => 'menu-1',
