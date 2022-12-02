@@ -12,7 +12,7 @@
 		return;
 	}
 
-	const button = siteNavigation.getElementsByTagName('button')[0];
+	const button = siteNavigation.getElementsByTagName('a')[0];
 
 	// Return early if the button doesn't exist.
 	if ('undefined' === typeof button) {
@@ -97,5 +97,11 @@
 		}
 	}
 }());
+
+
+document.querySelector("#nav-toggle")
+	.addEventListener("click", function () {
+		this.classList.toggle("active");
+	});
 
 

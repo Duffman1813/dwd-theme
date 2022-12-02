@@ -1,0 +1,22 @@
+.home-banner {
+
+    padding: 1em 1rem;
+    margin: 0 0 9em;
+    background: #d3d3d3;
+    background: radial-gradient(circle, #fff 0%, #aaa 100%);
+
+    h1 {
+        font-size: 3rem;
+        text-align: center;
+        line-height: 1.3;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+        text-align: center;
+    }
+}

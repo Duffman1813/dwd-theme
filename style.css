@@ -60,6 +60,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url("https://fonts.googleapis.com/css2?family=Asap&display=swap");
 html {
 	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;
@@ -86,8 +87,8 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 h1 {
-	font-size: 2em;
-	margin: 0.67em 0;
+	font-size: 5em;
+	text-align: center;
 }
 
 /* Grouping content
@@ -468,13 +469,8 @@ hr {
 	margin-bottom: 1.5em;
 }
 
-ul,
-ol {
-	margin: 0 0 1.5em 3em;
-}
-
 ul {
-	list-style: disc;
+	list-style: none;
 }
 
 ol {
@@ -519,10 +515,7 @@ table {
 /* Links
 --------------------------------------------- */
 a {
-	color: #4169e1;
-}
-a:visited {
-	color: #800080;
+	color: #fff;
 }
 a:hover, a:focus, a:active {
 	color: #191970;
@@ -532,9 +525,7 @@ a:focus {
 }
 a:hover, a:active {
 	outline: 0;
-}
-
-/* Forms
+} /* Forms
 --------------------------------------------- */
 button,
 input[type=button],
@@ -620,6 +611,10 @@ textarea {
 --------------------------------------------------------------*/
 /* Navigation
 --------------------------------------------- */
+.site-header {
+	position: relative;
+}
+
 .main-navigation {
 	display: block;
 	width: 100%;
@@ -629,6 +624,8 @@ textarea {
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
+	transition: all ease 0.3s;
+	transform-origin: top;
 }
 .main-navigation ul ul {
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -656,14 +653,98 @@ textarea {
 .main-navigation li {
 	position: relative;
 }
+.main-navigation li:hover > a, .main-navigation li.focus > a {
+	background-color: #fff;
+	color: black;
+	border-radius: 10px;
+}
 .main-navigation a {
 	display: block;
+	padding: 1em 1rem;
 	text-decoration: none;
+	text-align: center;
+	color: #4a4a4a;
+	font-weight: 400;
+	letter-spacing: 0.5px;
+	line-height: 1.5;
+	transition: color ease 0.3s;
 }
-/* Small menu. */
-.menu-toggle,
+.main-navigation .current_page_item > a,
+.main-navigation .current-menu-item > a,
+.main-navigation .current_page_ancestor > a,
+.main-navigation .current-menu-ancestor > a {
+	background-color: #F2F2F2;
+	border: 2px solid #111;
+	color: #111;
+}
+
 .main-navigation.toggled ul {
 	display: block;
+	background-color: #7A84A1;
+	position: absolute;
+	transform: scaleY(1);
+	width: 100%;
+	height: 100vh;
+	text-align: center;
+	top: 5rem;
+	left: 0;
+}
+
+#nav-toggle {
+	background: transparent;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
+	transform: translate(0%, -50%);
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+	cursor: pointer;
+	border-radius: 1px;
+	height: 2px;
+	width: 35px;
+	background: white;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	display: block;
+	content: "";
+}
+
+#nav-toggle span:before {
+	top: -10px;
+}
+
+#nav-toggle span:after {
+	top: 10px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+	transition: all 0.5s ease-in-out;
+}
+
+#nav-toggle.active span {
+	background-color: transparent;
+}
+
+#nav-toggle.active span:before,
+#nav-toggle.active span:after {
+	top: 0;
+}
+
+#nav-toggle.active span:before {
+	transform: rotate(135deg);
+}
+
+#nav-toggle.active span:after {
+	transform: rotate(-135deg);
 }
 
 @media screen and (min-width: 37.5em) {
@@ -672,6 +753,13 @@ textarea {
 	}
 	.main-navigation ul {
 		display: flex;
+		justify-content: flex-end;
+	}
+	.main-navigation li {
+		padding: 1rem;
+	}
+	.main-navigation li a {
+		padding: 1rem;
 	}
 }
 .site-main .comment-navigation,
@@ -720,6 +808,25 @@ textarea {
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.home-banner {
+	padding: 1em 1rem;
+	margin: 0 0 9em;
+	background: #d3d3d3;
+	background: radial-gradient(circle, #fff 0%, #aaa 100%);
+}
+.home-banner h1 {
+	font-size: 3rem;
+	text-align: center;
+	line-height: 1.3;
+}
+.home-banner h2 {
+	font-size: 1.3rem;
+}
+.home-banner p {
+	font-size: 1.25rem;
+	text-align: center;
 }
 
 /* Comments
@@ -829,267 +936,39 @@ textarea {
 /* Header
 --------------------------------------------- */
 .site-header {
-	background-color: black;
-	width: 100vw;
-	height: 100px;
+	display: flex;
+	background-color: #7A84A1;
 }
 
 /* Footer
 --------------------------------------------- */
 .site-footer {
-	background-color: black;
-	width: 100vw;
-	height: 100px;
-}
-
-/* NavMenu
---------------------------------------------- */
-body {
-	background: #111111;
-}
-
-.iphone {
-	overflow: hidden;
-	width: 420px;
-	height: 820px;
-	margin: 40px auto;
-	background: url(http://www.radio.net/inc/v2/images/landing/hero/devices/single/iphone_6.png) no-repeat;
-	background-color: #111;
-	background-size: 100% 100%;
-}
-
-.iphone__inner {
-	position: relative;
-	width: 368px;
-	height: 621px;
-	margin: 99px auto 0 auto;
-	font-family: "Open Sans Condensed", sans-serif;
-	font-size: 18px;
-	overflow: hidden;
-}
-.iphone__inner img {
-	max-width: 100%;
-}
-
-main {
-	padding-top: 80px;
-	padding-left: 10px;
-	padding-right: 10px;
-	background-color: #ffffff;
-}
-
-.header {
-	position: absolute;
-	width: 100%;
-	padding: 15px 2px 4px 10px;
-	box-sizing: border-box;
-	background: #262626;
-	z-index: 8000;
-}
-
-.burger-container {
-	width: 35px;
-	height: 35px;
-}
-
-.burger {
-	position: relative;
-	cursor: pointer;
-}
-.burger span {
-	position: relative;
-	left: 0;
-	display: block;
-	width: 100%;
-	height: 2px;
-	background: #ffffff;
-	transition: all 0.3s cubic-bezier(0.27, 0.16, 0.36, 0.99);
-	margin-bottom: 8px;
-}
-.burger span:nth-of-type(4) {
-	position: absolute;
-	top: 50%;
-	transform: rotate(45deg) translateY(-50%) scale(0);
-}
-.burger span:nth-of-type(5) {
-	position: absolute;
-	top: 50%;
-	transform: rotate(-45deg) translateY(-50%) scale(0);
-}
-
-.nav-container {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
+	background-color: #7A84A1;
 	bottom: 0;
-	overflow: visible;
 }
 
-.nav-container__menu {
-	position: absolute;
-	top: 0;
-	right: -100%;
-	width: 70%;
-	height: 100%;
-	overflow: hidden;
-	background: #ffffff;
-	color: #111111;
-	padding: 88px 20px 20px 20px;
-	box-sizing: border-box;
-	transition: all 0.3s cubic-bezier(0.27, 0.16, 0.36, 0.99);
-}
-.nav-container__menu ul {
-	list-style-type: none;
-	width: 100%;
-	padding: 0;
-	margin: 0;
-}
-.nav-container__menu ul li {
-	position: relative;
-	left: -100%;
-	padding: 15px 10px;
-	font-size: 25px;
-	font-family: "Work Sans", cursive;
-	cursor: pointer;
+/* Scroll
+--------------------------------------------- */
+/* Background
+--------------------------------------------- */
+/* Setting fade transition and default settings */
+body {
+	color: #000;
+	background-color: #f4f4f4;
+	transition: background-color 1s ease;
 }
 
-.nav-container__social {
-	position: absolute;
-	top: 0;
-	left: -100%;
-	width: 30%;
-	height: 100%;
-	overflow: hidden;
-	background: #F0F0F0;
-	padding: 80px 20px 20px 20px;
-	box-sizing: border-box;
-	transition: all 0.3s cubic-bezier(0.27, 0.16, 0.36, 0.99);
-}
-.nav-container__social .social-icons {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-}
-.nav-container__social .social-icons .social-icon {
-	position: relative;
-	left: -200%;
-	display: block;
-	width: 44px;
-	height: 44px;
-	padding-top: 20px;
-	transition: all 0.3s cubic-bezier(0.27, 0.16, 0.36, 0.99);
-	cursor: pointer;
-}
-.nav-container__social .social-icons .social-icon svg {
-	width: 44px;
-	height: 44px;
-	fill: #111111;
+.panel {
+	min-height: 100vh;
+	outline: 2px solid #476C6D;
 }
 
-.is--active .header {
-	z-index: 900;
-}
-.is--active .burger span:nth-of-type(1) {
-	left: 140%;
-	opacity: 0;
-}
-.is--active .burger span:nth-of-type(2) {
-	left: 180%;
-	opacity: 0;
-}
-.is--active .burger span:nth-of-type(3) {
-	left: 220%;
-	opacity: 0;
-}
-.is--active .burger span:nth-of-type(4) {
-	transform: rotate(45deg) translateY(-50%) scale(1);
-}
-.is--active .burger span:nth-of-type(5) {
-	transform: rotate(-45deg) translateY(-50%) scale(1);
-}
-.is--active .nav-container {
-	top: 0;
-}
-.is--active .nav-container li {
-	transition: all 0.3s cubic-bezier(0.27, 0.16, 0.36, 0.99);
-	position: relative;
-	left: 0;
-}
-.is--active .nav-container li:nth-of-type(1) {
-	transition-delay: 0.2s;
-}
-.is--active .nav-container li:nth-of-type(2) {
-	transition-delay: 0.25s;
-}
-.is--active .nav-container li:nth-of-type(3) {
-	transition-delay: 0.3s;
-}
-.is--active .nav-container li:nth-of-type(4) {
-	transition-delay: 0.35s;
-}
-.is--active .nav-container__menu {
-	right: 0;
-}
-.is--active .nav-container__social {
-	left: 0;
-}
-.is--active .social-icon {
-	position: relative;
-	left: 0 !important;
-}
-.is--active .social-icon:nth-of-type(1) {
-	transition-delay: 0.35s;
-}
-.is--active .social-icon:nth-of-type(2) {
-	transition-delay: 0.4s;
-}
-.is--active .social-icon:nth-of-type(3) {
-	transition-delay: 0.45s;
+.color-dark {
+	background-color: #B4CED3;
 }
 
-.social {
-	display: none;
-	position: fixed;
-	bottom: 20px;
-	right: 0;
-	font-size: 0;
-	list-style: none;
-	margin: 0;
-	padding: 0 26px;
-}
-@media screen and (min-width: 1100px) {
-	.social {
-		display: block;
-	}
-}
-.social li {
-	display: inline-block;
-	margin: 12px;
-}
-.social a,
-.social svg {
-	display: block;
-}
-.social a {
-	position: relative;
-	height: 40px;
-	width: 40px;
-}
-.social svg {
-	height: 100%;
-	width: 100%;
-}
-.social .icon {
-	color: #ffffff;
-	fill: #ffffff;
-}
-.social .icon:hover {
-	border-radius: 100%;
-	color: #ffffff;
-	fill: #ffffff;
-	transform: scale(1.25);
-	transition: background-color 0.5s, transform 0.5s ease-out;
+.color-light {
+	background-color: #F2F2F2;
 }
 
 /*--------------------------------------------------------------

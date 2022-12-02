@@ -1,0 +1,19 @@
+/* Setting fade transition and default settings */
+body {
+    color: #000;
+    background-color: #f4f4f4;
+    transition: background-color 1s ease;
+}
+
+.panel {
+    min-height: 100vh;
+    outline: 2px solid #476C6D;
+}
+
+.color-dark {
+    background-color: #B4CED3;
+}
+
+.color-light {
+    background-color: #F2F2F2;
+}

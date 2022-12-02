@@ -5,6 +5,7 @@
 /* Posts and pages
 --------------------------------------------- */
 @import "content/posts-and-pages";
+@import "content/front-page";
 
 /* Comments
 --------------------------------------------- */
@@ -34,6 +35,10 @@
 --------------------------------------------- */
 @import "footer/footer";
 
-/* NavMenu
+/* Scroll
 --------------------------------------------- */
-@import "navmenu/navmenu";
+@import "scroll/scroll";
+
+/* Background
+--------------------------------------------- */
+@import "background/background";
